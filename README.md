@@ -1,16 +1,34 @@
 # fetchr
 
-A new Flutter project.
+A personal project meant to mimic application like PostMan to work with and handle HTTP requests.
 
-## Getting Started
+## Roadmap
 
-This project is a starting point for a Flutter application.
+This is the initial feature roadmap with resources included
 
-A few resources to get you started if this is your first Flutter project:
+**Roadmap Legend**
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```
+💭 - Researching
+🚧 - In Progress
+✅ - Completed
+❌ - Removed
+⚠️ - Needs Rework
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Features**
+
+- Use Fluent Design System
+  - [fluent_ui package](https://pub.dev/packages/fluent_ui)
+- Make and customize HTTP calls
+  - [http package](https://pub.dev/packages/http)
+- Responsive editor with resizable panes
+  - [Split Widget](https://github.com/flutter/flutter/issues/64768#issuecomment-796046588)
+  - [resizable_widget package](https://pub.dev/packages/resizable_widget)
+  - [split_view package](https://pub.dev/packages/split_view)
+  - [multi_split_view package](https://pub.dev/packages/multi_split_view)
+- Render HTTP Response Preview
+  - [webview_flutter package](https://pub.dev/packages/webview_flutter)
+  - [Render local HTML String](https://stackoverflow.com/questions/53831312/how-to-render-a-local-html-file-with-flutter-dart-webview)
+- Pretty Text HTTP Response
+  - [code_text_view package](https://pub.dev/packages/code_text_field)
