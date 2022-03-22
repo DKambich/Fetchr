@@ -17,10 +17,10 @@ This is the initial feature roadmap with resources included
 ```
 
 **Features**
-- 🚧 Design App Logo
-  - [Base SVG](https://www.onlinewebfonts.com/icon/233163)
+- ✅ Design App Logo
+  - [Potential Base SVG](https://www.onlinewebfonts.com/icon/233163)
   - [SVG Editor](https://pixelied.com/)
-- Use Fluent Design System
+- 🚧 Use Fluent Design System
   - [fluent_ui package](https://pub.dev/packages/fluent_ui)
   - [Windows 11 Border Radius](https://docs.microsoft.com/en-us/windows/apps/design/signature-experiences/geometry  )
 - Make and customize HTTP calls
