@@ -1,4 +1,5 @@
 import 'package:fetchr/constants.dart';
+import 'package:fetchr/split.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,46 +17,53 @@ class _RequestPageState extends State<RequestPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Split(
+      axis: Axis.vertical,
+      initialFractions: [0.5, 0.5],
+      minSizes: [100, 100],
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 100,
-                child: Combobox<RequestMethod>(
-                  placeholder: const Text('Selected list item'),
-                  isExpanded: true,
-                  items: RequestMethod.values
-                      .map((e) => ComboboxItem<RequestMethod>(
-                            value: e,
-                            child: Text(e
-                                .toString()
-                                .replaceAll("RequestMethod.", "")
-                                .toUpperCase()),
-                          ))
-                      .toList(),
-                  value: currentMethod,
-                  onChanged: (value) {
-                    if (value == null) return;
-                    setState(() {
-                      currentMethod = value;
-                    });
-                  },
-                ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 100,
+                    child: Combobox<RequestMethod>(
+                      placeholder: const Text('Selected list item'),
+                      isExpanded: true,
+                      items: RequestMethod.values
+                          .map((e) => ComboboxItem<RequestMethod>(
+                                value: e,
+                                child: Text(e
+                                    .toString()
+                                    .replaceAll("RequestMethod.", "")
+                                    .toUpperCase()),
+                              ))
+                          .toList(),
+                      value: currentMethod,
+                      onChanged: (value) {
+                        if (value == null) return;
+                        setState(() {
+                          currentMethod = value;
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: TextBox(
+                      controller: controller,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  FilledButton(
+                      child: const Text("Send"), onPressed: sendRequest),
+                ],
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: TextBox(
-                  controller: controller,
-                ),
-              ),
-              const SizedBox(width: 8),
-              FilledButton(child: const Text("Send"), onPressed: sendRequest),
-            ],
-          ),
+            ),
+          ],
         ),
         Expanded(
           child: ResponseViewer(
