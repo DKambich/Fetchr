@@ -26,7 +26,7 @@ class _RequestPageState extends State<RequestPage> {
               SizedBox(
                 width: 100,
                 child: Combobox<RequestMethod>(
-                  placeholder: Text('Selected list item'),
+                  placeholder: const Text('Selected list item'),
                   isExpanded: true,
                   items: RequestMethod.values
                       .map((e) => ComboboxItem<RequestMethod>(
@@ -46,14 +46,14 @@ class _RequestPageState extends State<RequestPage> {
                   },
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Expanded(
                 child: TextBox(
                   controller: controller,
                 ),
               ),
-              SizedBox(width: 8),
-              FilledButton(child: Text("Send"), onPressed: sendRequest),
+              const SizedBox(width: 8),
+              FilledButton(child: const Text("Send"), onPressed: sendRequest),
             ],
           ),
         ),
@@ -106,7 +106,7 @@ class ResponseViewer extends StatelessWidget {
         SizedBox(
           width: 100,
           child: Combobox<String>(
-            placeholder: Text('Selected list item'),
+            placeholder: const Text('Selected list item'),
             isExpanded: true,
             items: ["Pretty", "Raw", "Preview"]
                 .map((e) => ComboboxItem<String>(
@@ -122,12 +122,13 @@ class ResponseViewer extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              constraints: BoxConstraints(minWidth: double.infinity),
+              constraints: const BoxConstraints(minWidth: double.infinity),
               child: SelectableText(
                 response!.body,
                 showCursor: true,
                 maxLines: null,
-                toolbarOptions: ToolbarOptions(copy: true, selectAll: true),
+                toolbarOptions:
+                    const ToolbarOptions(copy: true, selectAll: true),
               ),
             ),
           ),

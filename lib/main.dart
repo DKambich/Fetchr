@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return const FluentApp(
       title: 'Fetchr',
       home: MyHomePage(),
+      themeMode: ThemeMode.system,
     );
   }
 }
@@ -35,8 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
         selected: index,
         header: Row(
           children: [
-            Image.asset(
-              "assets/icons/logo_outlined_64.png",
+            ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                  FluentTheme.of(context).iconTheme.color ?? Colors.black,
+                  BlendMode.srcIn),
+              child: Image.asset(
+                "assets/icons/logo_outlined_64.png",
+              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 4.0),
@@ -68,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         displayMode: PaneDisplayMode.top,
       ),
-      content: NavigationBody(index: 0, children: [
+      content: NavigationBody(index: 0, children: const [
         ScaffoldPage(
           content: RequestPage(),
         ),
