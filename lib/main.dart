@@ -1,3 +1,4 @@
+import 'package:fetchr/pages/request_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 void main() {
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
           PaneItem(
             icon: const Icon(FluentIcons.history),
             title: const Text("History"),
-          )
+          ),
         ],
         onChanged: (i) {
           setState(() {
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       content: NavigationBody(index: 0, children: [
         ScaffoldPage(
-          content: Container(),
+          content: RequestPage(),
         ),
       ]),
     );
