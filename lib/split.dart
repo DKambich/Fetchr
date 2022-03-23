@@ -324,17 +324,25 @@ class DefaultSplitter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.rotate(
-      angle: isHorizontal ? degToRad(90.0) : degToRad(0.0),
-      child: Align(
-        widthFactor: 0.5,
-        heightFactor: 0.5,
-        child: Icon(
-          Icons.drag_handle,
-          size: iconSize,
-          color: Theme.of(context).focusColor,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        isHorizontal
+            ? const VerticalDivider(width: 1)
+            : const Divider(height: 1),
+        Transform.rotate(
+          angle: isHorizontal ? degToRad(90.0) : degToRad(0.0),
+          child: Align(
+            widthFactor: 0.5,
+            heightFactor: 0.5,
+            child: Icon(
+              Icons.drag_handle,
+              size: iconSize,
+              color: Theme.of(context).focusColor,
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
