@@ -19,8 +19,8 @@ class _RequestPageState extends State<RequestPage> {
   Widget build(BuildContext context) {
     return Split(
       axis: Axis.vertical,
-      initialFractions: [0.5, 0.5],
-      minSizes: [100, 100],
+      initialFractions: const [0.5, 0.5],
+      minSizes: const [100, 100],
       children: [
         Column(
           children: [
@@ -65,11 +65,9 @@ class _RequestPageState extends State<RequestPage> {
             ),
           ],
         ),
-        Expanded(
-          child: ResponseViewer(
-            response: response,
-          ),
-        )
+        ResponseViewer(
+          response: response,
+        ),
       ],
     );
   }
@@ -129,14 +127,18 @@ class ResponseViewer extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              constraints: const BoxConstraints(minWidth: double.infinity),
-              child: SelectableText(
-                response!.body,
-                showCursor: true,
-                maxLines: null,
-                toolbarOptions:
-                    const ToolbarOptions(copy: true, selectAll: true),
+            child: Acrylic(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SelectableText(
+                  response!.body,
+                  showCursor: true,
+                  maxLines: null,
+                  toolbarOptions:
+                      const ToolbarOptions(copy: true, selectAll: true),
+                ),
               ),
             ),
           ),
@@ -145,3 +147,6 @@ class ResponseViewer extends StatelessWidget {
     );
   }
 }
+
+/*  showCursor: true,
+                ,*/

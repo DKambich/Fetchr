@@ -1,4 +1,5 @@
 import 'package:fetchr/pages/request_page.dart';
+import 'package:fetchr/sidebars/request_sidebar.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 void main() {
@@ -11,10 +12,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const FluentApp(
+    return FluentApp(
       title: 'Fetchr',
-      home: MyHomePage(),
-      themeMode: ThemeMode.system,
+      home: const MyHomePage(),
+      themeMode: ThemeMode.light,
+      theme: ThemeData(brightness: Brightness.light),
+      darkTheme: ThemeData(brightness: Brightness.dark),
     );
   }
 }
@@ -74,9 +77,20 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         displayMode: PaneDisplayMode.top,
       ),
-      content: NavigationBody(index: 0, children: const [
+      content: NavigationBody(index: 0, children: [
         ScaffoldPage(
-          content: RequestPage(),
+          content: Row(children: const [
+            Expanded(flex: 1, child: RequestSidebar()),
+            Divider(
+              direction: Axis.vertical,
+            ),
+            Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: RequestPage(),
+                ))
+          ]),
         ),
       ]),
     );

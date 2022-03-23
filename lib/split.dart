@@ -11,7 +11,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 // import 'utils.dart';
 
@@ -315,7 +314,8 @@ class _SplitState extends State<Split> {
 }
 
 class DefaultSplitter extends StatelessWidget {
-  const DefaultSplitter({required this.isHorizontal});
+  const DefaultSplitter({Key? key, required this.isHorizontal})
+      : super(key: key);
 
   static const double iconSize = 24.0;
   static const double splitterWidth = 12.0;
