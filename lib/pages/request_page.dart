@@ -17,6 +17,7 @@ class _RequestPageState extends State<RequestPage> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -57,7 +58,9 @@ class _RequestPageState extends State<RequestPage> {
           ),
         ),
         Expanded(
-          child: SingleChildScrollView(child: Text(response?.body ?? "")),
+          child: ResponseViewer(
+            response: response,
+          ),
         )
       ],
     );
@@ -86,5 +89,50 @@ class _RequestPageState extends State<RequestPage> {
         break;
     }
     setState(() {});
+  }
+}
+
+class ResponseViewer extends StatelessWidget {
+  final http.Response? response;
+
+  const ResponseViewer({Key? key, required this.response}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (response == null) return Container();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: 100,
+          child: Combobox<String>(
+            placeholder: Text('Selected list item'),
+            isExpanded: true,
+            items: ["Pretty", "Raw", "Preview"]
+                .map((e) => ComboboxItem<String>(
+                      value: e,
+                      child: Text(e),
+                    ))
+                .toList(),
+            value: "Raw",
+            onChanged: (value) {},
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              constraints: BoxConstraints(minWidth: double.infinity),
+              child: SelectableText(
+                response!.body,
+                showCursor: true,
+                maxLines: null,
+                toolbarOptions: ToolbarOptions(copy: true, selectAll: true),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
   }
 }
